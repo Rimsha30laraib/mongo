@@ -11,8 +11,12 @@ function App() {
 
   // Fetch all users
   const getUsers = async () => {
-    const res = await fetch(`${API_URL}`);
-    const data = await res.json();
+    // const res = await fetch(`${API_URL}`);
+    const res = await fetch(`${API_URL}/users`);
+const text = await res.text();
+console.log("Response text:", text);
+
+    // const data = await res.json();
     setUsers(data);
   };
 
