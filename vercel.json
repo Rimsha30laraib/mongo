@@ -10,16 +10,7 @@
         "use": "@vercel/static-build",
         "config": { "distDir": "frontend/dist" }
       }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "backend/index.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "frontend/dis/$1"
-      }
     ]
+    
   }
   
