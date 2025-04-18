@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // const API_URL="https://mongo-practice-phi.vercel.app/api"
 // const API_URL="http://localhost:5000/users"
-const API_URL = "https://mongo-n1sb.vercel.app/user";
+const API_URL = "https://mongo-n1sb.vercel.app/api";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -12,8 +12,8 @@ function App() {
   // Fetch all users
   const getUsers = async () => {
     // const res = await fetch(`${API_URL}`);
-    const res = await fetch(`${API_URL}`);
-const text = await res.text();
+    const res = await fetch(`${API_URL}/users`);
+const data = await res.json();
 console.log("Response text:", text);
 
     // const data = await res.json();
@@ -33,7 +33,7 @@ console.log("Response text:", text);
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API_URL}`, {
+    const res = await fetch(`${API_URL}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
