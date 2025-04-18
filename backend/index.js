@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 // const PORT = 5000;
 app.use(cors({
-  origin: "*", // your frontend URL
+  origin: "https://mongo-phi.vercel.app", // your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
@@ -22,6 +22,10 @@ async function connectDB() {
   console.log("✅ Connected to MongoDB");
   return client.db("practiceDB");
 }
+// Test route
+app.get("/api/users", (req, res) => {
+  res.json([{ name: "Ali", email: "ali@gmail.com" }]);
+});
 
 app.get("/api/users", async (req, res) => {
   const db = await connectDB();
