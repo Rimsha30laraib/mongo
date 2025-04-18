@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 // const API_URL="https://mongo-practice-phi.vercel.app/api"
-// const API_URL="http://localhost:5000/users"
-const API_URL = "https://mongo-n1sb.vercel.app/api";
+const API_URL="http://localhost:5000/api"
+// const API_URL = "https://mongo-n1sb.vercel.app/api";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -14,7 +14,7 @@ function App() {
     // const res = await fetch(`${API_URL}`);
     const res = await fetch(`${API_URL}/users`);
 const data = await res.json();
-console.log("Response text:", text);
+// console.log("Response text:", text);
 
     // const data = await res.json();
     setUsers(data);
