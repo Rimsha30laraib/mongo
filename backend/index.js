@@ -23,9 +23,10 @@ async function connectDB() {
   return client.db("practiceDB");
 }
 // Test route
-app.get("/api/users", (req, res) => {
-  res.json([{ name: "Ali", email: "ali@gmail.com" }]);
-});
+// app.get("/api/users", (req, res) => {
+//   console.log("GET /api/users called");  // Log when the endpoint is hit
+//   res.json([{ name: "Ali", email: "ali@gmail.com" }]);
+// });
 
 // app.get("/api/users", async (req, res) => {
 //   const db = await connectDB();
