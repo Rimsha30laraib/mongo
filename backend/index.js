@@ -34,7 +34,15 @@
 //   console.log(`🚀 Backend running on http://localhost:${PORT}`);
 // });
 
+
 // new code 
+import express from "express";
+import cors from "cors";
+
+const app = express();
+// app.use(cors({ origin: "https://mongo-phi.vercel.app/", methods: ["POST", "GET", "DELETE", "PUT"] }));
+// app.use(express.json());
+// const cors = require('cors');
 const { MongoClient } = require("mongodb");
 
 let cachedClient = null;
@@ -48,19 +56,28 @@ async function connectDB() {
   return cachedClient.db("practiceDB");
 }
 
+// Enable CORS
+const corsOptions = {
+  origin: "https://mongo-phi.vercel.app", // Allow only your frontend domain
+  methods: ["GET", "POST"], // Allowed HTTP methods
+};
+
+// Add cors middleware
 module.exports = async (req, res) => {
-  const db = await connectDB();
+  cors(corsOptions)(req, res, async () => {
+    const db = await connectDB();
 
-  if (req.method === "GET") {
-    const users = await db.collection("users").find().toArray();
-    return res.status(200).json(users);
-  }
+    if (req.method === "GET") {
+      const users = await db.collection("users").find().toArray();
+      return res.status(200).json(users);
+    }
 
-  if (req.method === "POST") {
-    const { name, email } = req.body;
-    const result = await db.collection("users").insertOne({ name, email });
-    return res.status(201).json({ insertedId: result.insertedId });
-  }
+    if (req.method === "POST") {
+      const { name, email } = req.body;
+      const result = await db.collection("users").insertOne({ name, email });
+      return res.status(201).json({ insertedId: result.insertedId });
+    }
 
-  return res.status(405).json({ message: "Method not allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
+  });
 };
