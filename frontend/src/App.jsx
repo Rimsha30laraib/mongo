@@ -12,7 +12,7 @@ function App() {
   // Fetch all users
   const getUsers = async () => {
     // const res = await fetch(`${API_URL}`);
-    const res = await fetch(`${API_URL}/users`);
+    const res = await fetch(`${API_URL}`);
 const text = await res.text();
 console.log("Response text:", text);
 
