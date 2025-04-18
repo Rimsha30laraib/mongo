@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // const API_URL="https://mongo-practice-phi.vercel.app/api"
 // const API_URL="http://localhost:5000/users"
-const API_URL = "/api/users";
+const API_URL = "https://mongo-n1sb.vercel.app/users";
 
 function App() {
   const [users, setUsers] = useState([]);
