@@ -5,11 +5,11 @@ const cors = require("cors");
 
 const app = express();
 // const PORT = 5000;
-
 app.use(cors({
-    origin: "https://mongo-phi.vercel.app/api", // Change this to match your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: "*", // your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
+
 const PORT = process.env.PORT || 5000;
 
 
