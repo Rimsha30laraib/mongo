@@ -11,7 +11,7 @@ function App() {
 
   // Fetch all users
   const getUsers = async () => {
-    const res = await fetch(`${API_URL}/users`);
+    const res = await fetch(`${API_URL}`);
     const data = await res.json();
     setUsers(data);
   };
@@ -29,7 +29,7 @@ function App() {
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API_URL}/users`, {
+    const res = await fetch(`${API_URL}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
