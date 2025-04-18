@@ -27,16 +27,33 @@ app.get("/api/users", (req, res) => {
   res.json([{ name: "Ali", email: "ali@gmail.com" }]);
 });
 
+// app.get("/api/users", async (req, res) => {
+//   const db = await connectDB();
+//   const users = await db.collection("users").find().toArray();
+//   res.json(users);
+// });
+
+// app.post("/api/users", async (req, res) => {
+//   const db = await connectDB();
+//   const { name, email } = req.body;
+//   const result = await db.collection("users").insertOne({ name, email });
+//   res.json({ insertedId: result.insertedId });
+// });
+
 app.get("/api/users", async (req, res) => {
+  console.log("GET /api/users called");  // Log when the endpoint is hit
   const db = await connectDB();
   const users = await db.collection("users").find().toArray();
+  console.log("Users fetched:", users);  // Log the users fetched from DB
   res.json(users);
 });
 
 app.post("/api/users", async (req, res) => {
-  const db = await connectDB();
   const { name, email } = req.body;
+  console.log("POST /api/users called with data:", { name, email });  // Log posted data
+  const db = await connectDB();
   const result = await db.collection("users").insertOne({ name, email });
+  console.log("New user inserted:", result.insertedId);
   res.json({ insertedId: result.insertedId });
 });
 

@@ -13,7 +13,7 @@ function App() {
     // const res = await fetch(`${API_URL}`);
     const res = await fetch(`${API_URL}/users`);
 const data = await res.json();
-// console.log("Response text:", text);
+console.log("Response text:", data);
 
     // const data = await res.json();
     setUsers(data);
